@@ -1,0 +1,5 @@
+使用したデータセット
+
+MNIST
+
+[URL]http://yann.lecun.com/exdb/mnist/
