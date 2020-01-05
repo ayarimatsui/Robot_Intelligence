@@ -71,7 +71,7 @@ class DataPreprocessing:
 
 
     def preprocess_data(self): #mainファイルで実行
-        with open(self.save_file, 'rb') as f:
+        with open('dataset/mnist.pkl', 'rb') as f:
             dataset=pickle.load(f)
         train_imgs=self.normalize(dataset['train_img'])
         test_imgs=self.normalize(dataset['test_img'])

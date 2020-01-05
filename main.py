@@ -42,6 +42,7 @@ class Training:
             test_accuracy=self.network.accuracy(self.test_imgs,self.test_labels)
             self.train_accuracy_list.append(train_accuracy)
             self.test_accuracy_list.append(test_accuracy)
+            print('train_accuracy: {}   test_accuracy: {}'.format(train_accuracy,test_accuracy))
 
 
     #学習開始関数
@@ -52,7 +53,7 @@ class Training:
             if self.current_iterator>=self.iterators_per_loop:
                 self.current_iterator=0
                 self.current_loop_index+=1
-                print('loop: {}/{} done   train_accuracy: {}    test_accuracy: {}'.format(self.current_loop_index,self.dataset_loops,self.train_accuracy_list[self.current_loop_index],self.test_accuracy_list[self.current_loop_index]))
+                print('loop: {}/{} done'.format(self.current_loop_index,self.dataset_loops))
         print('training done')
 
     #グラフ化
@@ -77,11 +78,11 @@ if __name__=="__main__":
 
     train_imgs,train_labels,test_imgs,test_labels=DataPreprocessing.preprocess_data()
 
-    network=NetWork()
+    network=NeuralNetWork()
     opt=SGD(learning_rate=0.01)
 
     training=Training(network=network, optimizer=opt, train_imgs=train_imgs, train_labels=train_labels, test_imgs=test_imgs, test_labels=test_labels, dataset_loops=100, batch_size=100)
 
-    trainer.startTraining()
+    training.startTraining()
 
-    trainer.showAccuracy()
+    training.showAccuracy()

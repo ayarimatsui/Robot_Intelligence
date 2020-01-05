@@ -43,14 +43,14 @@ class Affine:
 
     def forward(self,x):
         self.X=x
-        z=np.dot(self.x,self.W)+self.b
+        z=np.dot(self.X,self.W)+self.b
         return z
 
     def backward(self,error):
         self.dX=np.dot(error,self.W.T)
         self.dW=np.dot(self.X.T,error)
-        self.dB=np.sum(error,axis=0)
-        next_error = self.dX
+        self.db=np.sum(error,axis=0)
+        next_error=self.dX
         return next_error
 
 

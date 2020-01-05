@@ -10,7 +10,7 @@ class NeuralNetWork:
         self.parameters={}
         self.parameters['W1']=weight_init_std*np.random.randn(input_size,hidden_size_list[0])
         self.parameters['b1']=np.zeros(hidden_size_list[0])
-        self.parameters['W2']=weight_init_std*np.ramdom.randn(hidden_size_list[0],hidden_size_list[1])
+        self.parameters['W2']=weight_init_std*np.random.randn(hidden_size_list[0],hidden_size_list[1])
         self.parameters['b2']=np.zeros(hidden_size_list[1])
         self.parameters['W3']=weight_init_std*np.random.randn(hidden_size_list[1],output_size)
         self.parameters['b3']=np.zeros(output_size)
