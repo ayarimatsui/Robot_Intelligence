@@ -6,13 +6,13 @@ from collections import OrderedDict
 
 class NeuralNetWork:
 
-    def __init__(self,input_size=784,hidden_size_list=[100],output_size=10,weight_init_std=0.1,load_params_dict=None):
+    def __init__(self,input_size=784,hidden_size_list=[100,100],output_size=10,weight_init_std=0.1,load_params_dict=None):
         self.parameters={}
         self.parameters['W1']=weight_init_std*np.random.randn(input_size,hidden_size_list[0])
         self.parameters['b1']=np.zeros(hidden_size_list[0])
-        self.parameters['W2']=weight_init_std*np.ramdom.randn(hidden_size_list[0],hidden_size_list[0])
-        self.parameters['b2']=np.zeros(hidden_size_list[0])
-        self.parameters['W3']=weight_init_std*np.random.randn(hidden_size_list[0],output_size)
+        self.parameters['W2']=weight_init_std*np.ramdom.randn(hidden_size_list[0],hidden_size_list[1])
+        self.parameters['b2']=np.zeros(hidden_size_list[1])
+        self.parameters['W3']=weight_init_std*np.random.randn(hidden_size_list[1],output_size)
         self.parameters['b3']=np.zeros(output_size)
 
         self.layers=OrderedDict()
