@@ -80,11 +80,11 @@ class DataPreprocessing:
         return train_imgs,train_labels,test_imgs,test_labels
 
 
-    def add_noise(self,noise_rate): #mainファイルで実行 noise_rate=0~25 ランダムにノイズを加える
+    def noise_added(self,noise_rate): #mainファイルで実行 noise_rate=0~25 ランダムにノイズを加える
         train_imgs,train_labels,test_imgs,test_labels=self.preprocess_data()
         for i in range(len(train_imgs)):
             for j in range(len(train_imgs[0])):
                 a=random.uniform(0,100)
                 if a<=noise_rate:
                     train_imgs[i][j]=random.random()
-        return train_imgs
+        return train_imgs,train_labels,test_imgs,test_labels

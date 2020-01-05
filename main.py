@@ -76,7 +76,8 @@ if __name__=="__main__":
     if not os.path.isfile("dataset/mnist.pkl"):
         DataPreprocessing.save_dataset()
 
-    train_imgs,train_labels,test_imgs,test_labels=DataPreprocessing.preprocess_data()
+    #train_imgs,train_labels,test_imgs,test_labels=DataPreprocessing.preprocess_data()
+    train_imgs,train_labels,test_imgs,test_labels=DataPreprocessing.noise_added(25)
 
     network=NeuralNetWork()
     opt=SGD(learning_rate=0.01)
