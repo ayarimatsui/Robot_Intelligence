@@ -72,3 +72,9 @@ class NeuralNetWork:
         grads['b3']=self.layers['Affine3'].db
 
         return grads
+
+
+    def updateLayers(self):
+        self.layers['Affine1']=Affine(self.parameters['W1'],self.parameters['b1'])
+        self.layers['Affine2']=Affine(self.parameters['W2'],self.parameters['b2'])
+        self.layers['Affine3']=Affine(self.parameters['W3'],self.parameters['b3'])

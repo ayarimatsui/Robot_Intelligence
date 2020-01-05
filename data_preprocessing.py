@@ -7,7 +7,7 @@ import pickle
 from numpy.random import *
 import random
 
-class DataPreprocessing
+class DataPreprocessing:
 
     def __init__(self):
         # データのダウンロード
@@ -26,6 +26,7 @@ class DataPreprocessing
             urllib.request.urlretrieve(url+value,file_path)
 
         self.dataset={}
+        self.save_file=None
 
 
     def load_img(self,file_name):
