@@ -76,13 +76,13 @@ if __name__=="__main__":
     if not os.path.isfile("dataset/mnist.pkl"):
         DataPreprocessing.save_dataset()
 
-    #train_imgs,train_labels,test_imgs,test_labels=DataPreprocessing.preprocess_data()
-    train_imgs,train_labels,test_imgs,test_labels=DataPreprocessing.noise_added(25)
+    train_imgs,train_labels,test_imgs,test_labels=DataPreprocessing.preprocess_data()
+    #train_imgs,train_labels,test_imgs,test_labels=DataPreprocessing.noise_added(25)
 
     network=NeuralNetWork()
     opt=SGD(learning_rate=0.01)
 
-    training=Training(network=network, optimizer=opt, train_imgs=train_imgs, train_labels=train_labels, test_imgs=test_imgs, test_labels=test_labels, dataset_loops=100, batch_size=100)
+    training=Training(network=network, optimizer=opt, train_imgs=train_imgs, train_labels=train_labels, test_imgs=test_imgs, test_labels=test_labels, dataset_loops=100, batch_size=100) #dataset_loops変更可 50くらいでも良さそう
 
     training.startTraining()
 
