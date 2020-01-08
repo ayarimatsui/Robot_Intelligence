@@ -70,7 +70,6 @@ class Training:
         plt.title('Accuracy')
         plt.xlabel('epochs')
         plt.ylabel('accuracy')
-        plt.ylim([0,100])
         plt.show()
         plt.clf()
 
@@ -81,7 +80,6 @@ class Training:
         plt.title('Loss')
         plt.xlabel('epochs')
         plt.ylabel('loss')
-        plt.ylim([0,100])
         plt.show()
         plt.clf()
 
