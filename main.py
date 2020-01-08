@@ -76,7 +76,7 @@ class Training:
     def showLoss(self):
         plt.plot(np.arange(self.dataset_loops+1)[1:],np.array(self.train_loss_list),label='Train Data')
         plt.plot(np.arange(self.dataset_loops+1)[1:],np.array(self.test_loss_list),label='Test Data')
-        plt.legend(loc='lower right')
+        plt.legend(loc='upper right')
         plt.title('Loss')
         plt.xlabel('epochs')
         plt.ylabel('loss')
