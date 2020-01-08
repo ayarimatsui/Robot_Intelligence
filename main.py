@@ -17,6 +17,8 @@ class Training:
         self.test_labels=test_labels
         self.train_accuracy_list=[]
         self.test_accuracy_list=[]
+        self.train_loss_list=[]
+        self.test_loss_list=[]
         self.batch_size=batch_size
         self.train_size=train_imgs.shape[0]
         self.dataset_loops=dataset_loops # データセットを何周するか
@@ -42,7 +44,11 @@ class Training:
             test_accuracy=self.network.accuracy(self.test_imgs,self.test_labels)
             self.train_accuracy_list.append(train_accuracy)
             self.test_accuracy_list.append(test_accuracy)
-            print('train_accuracy: {}   test_accuracy: {}'.format(train_accuracy,test_accuracy))
+            train_loss=self.network.loss(self.train_imgs,self.train_labels)
+            test_loss=self.network.loss(self.test_imgs,self.test_labels)
+            self.train_loss_list.append(train_loss)
+            self.test_loss_list.append(test_loss)
+            print('train_accuracy: {}   test_accuracy: {}   train_loss: {}   test_loss: {}'.format(train_accuracy,test_accuracy,train_loss,test_loss))
 
 
     #学習開始関数
@@ -58,12 +64,23 @@ class Training:
 
     #グラフ化
     def showAccuracy(self):
-        plt.plot(np.arange(self.dataset_loops+1)[1:],100*np.array(self.train_accuracy_list),label='Train Data')
-        plt.plot(np.arange(self.dataset_loops+1)[1:],100*np.array(self.test_accuracy_list),label='Test Data')
+        plt.plot(np.arange(self.dataset_loops+1)[1:],np.array(self.train_accuracy_list),label='Train Data')
+        plt.plot(np.arange(self.dataset_loops+1)[1:],np.array(self.test_accuracy_list),label='Test Data')
         plt.legend(loc='lower right')
         plt.title('Accuracy')
         plt.xlabel('epochs')
-        plt.ylabel('accuracy (%)')
+        plt.ylabel('accuracy')
+        plt.ylim([0,100])
+        plt.show()
+        plt.clf()
+
+    def showLoss(self):
+        plt.plot(np.arange(self.dataset_loops+1)[1:],np.array(self.train_loss_list),label='Train Data')
+        plt.plot(np.arange(self.dataset_loops+1)[1:],np.array(self.test_loss_list),label='Test Data')
+        plt.legend(loc='lower right')
+        plt.title('Loss')
+        plt.xlabel('epochs')
+        plt.ylabel('loss')
         plt.ylim([0,100])
         plt.show()
         plt.clf()
@@ -87,3 +104,4 @@ if __name__=="__main__":
     training.startTraining()
 
     training.showAccuracy()
+    training.showLoss()
