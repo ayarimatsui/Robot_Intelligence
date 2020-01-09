@@ -4,7 +4,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from data_preprocessing import *
-from neural_network import *
+from neural_network_4layers import *  # change
 from optimizer import *
 
 class Training:
